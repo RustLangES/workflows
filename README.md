@@ -15,8 +15,8 @@ Colección de workflows preconfigurados para GitHub Actions listos para usar en 
 | [leptosfmt.yml](./.github/workflows/leptosfmt.yml)                   | Formateo específico para Leptos             | leptosfmt --check .                         |
 | [quality-gate-front.yml](./.github/workflows/quality-gate-front.yml) | Control de calidad para frontend con Leptos | fmt, clippy, leptosfmt                      |
 | [quality-gate.yml](./.github/workflows/quality-gate.yml)             | Control de calidad general                  | fmt, clippy, tests                          |
-| [setup-kubectl.yml](./.github/workflows/setup-kubectl.yml)           | Configuración de kubectl para Kubernetes    | kubectl, validacion y configuracion inicial |
 | [tests.yml](./.github/workflows/tests.yml)                           | Ejecución de tests automatizados            | cargo test                                  |
+| [setup-kubectl.sh](./setup-kubectl.sh)                               | Configuración de kubectl para Kubernetes    | kubectl, validacion y configuracion inicial |
 
 ## 🚀 Cómo Usar
 
@@ -36,6 +36,15 @@ Ejemplo para añadir el format check:
 steps:
   - uses: RustLangES/workflows/.github/workflows/format.yml@main
   # las variables por defecto estan bien
+```
+
+Para los scipts ejecuta así
+
+```yml
+steps:
+  - name: Run
+    run: |
+      bash <(curl -sL https://raw.githubusercontent.com/RustLangES/workflows/main/setup-kubectl.sh) --token "TU_TOKEN" --certificate "TU_CERTIFICADO" --host "TU_HOST"
 ```
 
 ## ✨ Características Clave
